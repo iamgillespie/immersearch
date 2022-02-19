@@ -18,7 +18,3 @@ for translation in translations:
     print(query)
 
     webbrowser.open(query)
-
-#change test for gihub
-
-
