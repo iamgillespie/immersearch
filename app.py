@@ -43,7 +43,6 @@ def result():
     htmlfile = htmlfile.select("a[href^='/url?q']")
     with open('templates/output.htm', 'w') as f:
         f.write(str(htmlfile))
-
     with open('templates/output.htm', 'r') as f:
         htmlfile = f.read()
         #htmlfile = htmlfile.replace("/url?q=", "")
@@ -62,13 +61,12 @@ def result():
     connection = sqlite3.connect('res.db')
     cursor = connection.cursor()
 
-    mk_table = """CREATE TABLE IF NOT EXISTS
-    res(req_id INTEGER PRIMARY KEY, url TEXT, desc TEXT)"""
+    
+    #searchquery = """INSERT INTO res(url, desc) VALUES (?, ?)"""
+    #data = [url, desc]
+    #cursor.execute("""INSERT INTO res(url, desc) VALUES (?, ?)""", url[url], desc[desc])
 
-    cursor.execute(mk_table)
-    cursor.execute("INSERT INTO res(req_id, url, desc) VALUES (?, ?, ?)", [destlang, url, desc])
-
-    link = cursor.execute("SELECT * FROM res WHERE req_id = ?", destlang)
+    #link = cursor.execute("SELECT * FROM res WHERE req_id = ?", destlang)
 
     #riposta = (htmlfile.select("a[href^='/url?q']"))
     
@@ -105,5 +103,5 @@ def result():
 #    with open('templates/output.txt', 'w') as f:
 #        f.write(str(soup))
 #        
-    return render_template("result.html", translation = destlang.text, url = link)
+    return render_template("result.html", translation = destlang.text, url = url)
 

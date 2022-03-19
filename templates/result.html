@@ -14,11 +14,18 @@
 
 
 <table class="table table-light">
-
+<tr>
+    <th>
+        URL
+    </th>
+    <th>
+        Description
+    </th>
+</tr>
 {% for row in url %}
 <tr>
         <td>
-            {{ row['url'] }}
+            <a href="https://google.com/{{ row['href'] }}">link</a>
         </td>
         <td>
             {{ row['desc'] }}
