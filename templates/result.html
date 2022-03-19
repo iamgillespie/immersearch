@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% block main %}
+
+
+<div class="center">
+<h5 class="center">
+{{ translation }}
+</h5>
+<hr>
+</div>
+
+
+<table class="table table-light">
+
+{% for row in url %}
+<tr>
+        <td>
+            {{ row['url'] }}
+        </td>
+        <td>
+            {{ row['desc'] }}
+        </td>
+</tr>
+{% endfor %}
+
+</table>
+
+
+{% endblock %}
