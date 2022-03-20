@@ -4,36 +4,20 @@
 
 {% block main %}
 
+<div class="container">
 
-<div class="center">
-<h5 class="center">
-{{ translation }}
-</h5>
-<hr>
+    <table class="table">
+        <th>
+            iMMEr query: {{ translation }}
+        </th>
+        <tr>
+                <td>
+                    {{ links|safe }}
+                </td>
+        </tr>
+    </table>
+        
+
 </div>
-
-
-<table class="table table-light">
-<tr>
-    <th>
-        URL
-    </th>
-    <th>
-        Description
-    </th>
-</tr>
-{% for row in url %}
-<tr>
-        <td>
-            <a href="https://google.com/{{ row['href'] }}">link</a>
-        </td>
-        <td>
-            {{ row['desc'] }}
-        </td>
-</tr>
-{% endfor %}
-
-</table>
-
 
 {% endblock %}
