@@ -1,7 +1,28 @@
 /* Size for brand */
+
+a {
+color: rgb(172, 185, 212);
+text-decoration: none;
+}
+
+a:hover{
+color: rgb(240, 235, 229);
+opacity: .7;
+}
+
+a:visited{
+color: cornflowerblue;
+}
+
+body{
+background-color: rgba(20, 20, 32, 0.938);
+font-size: large;
+}
+
 nav .navbar-brand {
-font-size: xx-large;
+font-size: x-large;
 opacity: .70;
+
 }
 nav .navbar-brand:hover {
 opacity: 1;
@@ -9,14 +30,15 @@ opacity: 1;
 
 .center {
 margin: auto;
-width: 80%;
+width: 50%;
 }
 
 .search {
-padding-top: 10%;
+padding-top: 15%;
+padding-bottom: 5%;
 }
 
-.options {
-padding-top: 5%;
-padding-bottom: 5%;
+table.pad {
+padding-top: 5;
+padding-bottom: 5;
 }
