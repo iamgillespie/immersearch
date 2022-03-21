@@ -30,17 +30,12 @@ nav .navbar-brand:hover {
 opacity: 1;
 }
 
-
-
 .search {
-padding-top: 15%;
+padding-top: 10%;
 padding-bottom: 5%;
 }
 
-table.pad {
-padding-top: 5;
-padding-bottom: 5;
-}
+
 
 p {
 white-space: nowrap; 
@@ -48,7 +43,6 @@ width: 90%;
 overflow: hidden;
 text-overflow: ellipsis;
 }
-
 
 #results {
 animation: fadein 3s; 
