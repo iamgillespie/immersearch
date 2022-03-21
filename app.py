@@ -60,7 +60,7 @@ def result():
 
     print(type(links))
     #replace commas with div brackets to break up the container.
-    links = re.sub(",", "</td></tr><tr><td>", str(links))
+    links = re.sub(">, ", "></p></td></tr><tr><td><p>", str(links))
 
     # consider using list to deal with broken images
     #attr_tags = ['src=', 'style=', 'id=', 'class=']
@@ -76,7 +76,11 @@ def result():
     #remove google links
     links = re.sub("Learn more", "", str(links))
     links = re.sub("Sign in", "", str(links))
-    links = re.sub("Preferences", "", str(links))
+    #links = re.sub("Preferences", "", str(links))
+
+    #modify anchor to open in new tab
+    links = re.sub("<a ", "<a target='_blank' ", str(links))
+
     #strip brackets
     links = (links.strip('[').strip(']'))
            

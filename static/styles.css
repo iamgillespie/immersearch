@@ -15,23 +15,22 @@ color: cornflowerblue;
 }
 
 body{
-background-color: rgba(20, 20, 32, 0.938);
+margin-left: 5%;
+margin-right: 5%;
+background-color: #5b6388;
 font-size: large;
 }
 
 nav .navbar-brand {
 font-size: x-large;
 opacity: .70;
-
 }
+
 nav .navbar-brand:hover {
 opacity: 1;
 }
 
-.center {
-margin: auto;
-width: 50%;
-}
+
 
 .search {
 padding-top: 15%;
@@ -42,3 +41,27 @@ table.pad {
 padding-top: 5;
 padding-bottom: 5;
 }
+
+p {
+white-space: nowrap; 
+width: 90%; 
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+
+#results {
+animation: fadein 3s; 
+}
+@keyframes fadein {
+0% {
+opacity:0;
+}
+40%{
+opacity:0.4;
+}
+100% {
+opacity:1;
+}
+}
+
