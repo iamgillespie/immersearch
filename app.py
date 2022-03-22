@@ -38,16 +38,16 @@ def result():
     htmlfile = BeautifulSoup(r.text, 'lxml')
     htmlfile = htmlfile.find("div", { "id" : "main" })
     htmlfile = htmlfile.select("a[href^='/url?q']")
-    with open('templates/output.htm', 'w') as f:
+    with open('output.htm', 'w') as f:
         f.write(str(htmlfile))
-    with open('templates/output.htm', 'r') as f:
+    with open('output.htm', 'r') as f:
         htmlfile = f.read()
         htmlfile = htmlfile.replace("/url?q=", "https://www.google.com/url?q=")
-    with open('templates/output.htm', 'w') as f:
+    with open('output.htm', 'w') as f:
         f.write(str(htmlfile))
     links = BeautifulSoup(htmlfile, 'lxml')   
     url = links.find_all(href=True)
-    with open('templates/output.htm', 'r') as f:
+    with open('output.htm', 'r') as f:
         soup = f.read()
 
     #reformatting and removing unwanted tags
