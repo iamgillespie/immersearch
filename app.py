@@ -20,8 +20,9 @@ def result():
     #selected language
     lang_sel = request.form.get("lang")
 
+    
     #translate and combine query with url
-    destlang = translator.translate(usrinp, dest=lang_sel)
+    destlang = translator.translate(usrinp, lang_sel,)
 
     #combine url with user input.
         #possible that this could be exchanged for other search engines.

@@ -15,8 +15,6 @@ color: cornflowerblue;
 }
 
 body{
-margin-left: 5%;
-margin-right: 5%;
 background-color: #5b6388;
 font-size: large;
 color: rgba(250, 235, 215, 0.747);
@@ -24,7 +22,7 @@ color: rgba(250, 235, 215, 0.747);
 
 nav .navbar-brand {
 font-size: x-large;
-opacity: .70;
+opacity: .8;
 }
 
 nav .navbar-brand:hover {
@@ -32,21 +30,20 @@ opacity: 1;
 }
 
 .search {
-padding-top: 10%;
+padding-top: 20%;
 padding-bottom: 5%;
 }
 
 
-
 p {
 white-space: nowrap; 
-width: 90%; 
+width: 85%; 
 overflow: hidden;
 text-overflow: ellipsis;
 }
 
 #results {
-animation: fadein 3s; 
+animation: fadein 2s; 
 }
 @keyframes fadein {
 0% {
@@ -60,3 +57,16 @@ opacity:1;
 }
 }
 
+.center {
+margin: auto;
+padding: 10px;
+}
+
+table { 
+table-layout:fixed;
+}
+td { 
+overflow: hidden; 
+text-overflow: ellipsis; 
+word-wrap: break-word;
+}
