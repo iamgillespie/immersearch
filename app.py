@@ -74,9 +74,10 @@ def result():
     links = re.sub('<img alt="', '', str(links))
     
     #remove google links
-    links = re.sub("Learn more", "", str(links))
-    links = re.sub("Sign in", "", str(links))
-    #links = re.sub("Preferences", "", str(links))
+
+    links = re.sub("Learn more", "</a><a href='https://www.google.com/search?q=best+language+learning+sites'>Language Resources", str(links))
+    links = re.sub("Sign in", "</a><a href='https://github.com/iamgillespie/immersearch.git'>About  iMMEr", str(links))
+    links = re.sub("Preferences", "</a><a href='https://www.google.com/'>All results taken from Google</a>", str(links))
 
     #modify anchor to open in new tab
     links = re.sub("<a ", "<a target='_blank' ", str(links))
