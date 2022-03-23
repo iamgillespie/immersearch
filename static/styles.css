@@ -1,4 +1,10 @@
-/* Size for brand */
+body{
+margin-left: 10%;
+margin-right: 10%;
+background-color: #b4bad3;
+font-size: large;
+color: rgba(250, 235, 215, 0.747);
+}
 
 a {
 color: rgb(172, 185, 212);
@@ -14,12 +20,6 @@ a:visited{
 color: cornflowerblue;
 }
 
-body{
-background-color: #5b6388;
-font-size: large;
-color: rgba(250, 235, 215, 0.747);
-}
-
 nav .navbar-brand {
 font-size: x-large;
 opacity: .8;
@@ -30,10 +30,12 @@ opacity: 1;
 }
 
 .search {
-padding-top: 20%;
-padding-bottom: 5%;
+padding-top: 50px;
 }
 
+.buttpad {
+padding-bottom: 50px;
+}
 
 p {
 white-space: nowrap; 
