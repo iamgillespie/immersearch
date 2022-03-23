@@ -1,42 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="notranslate" translate="no">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, width=device-width">
-        <!-- http://getbootstrap.com/docs/5.1/ -->
-        <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet">
-        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"></script>
 
-        <!-- CSS link -->
-        <link href="/static/styles.css" rel="stylesheet">
-        <title>iMMER</title>
+    <meta charset="utf-8">
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <!-- http://getbootstrap.com/docs/5.1/ -->
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"></script>
 
+    <!-- CSS link -->
+    <link href="/static/styles.css" rel="stylesheet">
+
+    <title>iMMER</title>
 
     </head>
 
     <body>
     <div class="container-fluid">
+        <div class="buttpad">
         <nav class="navbar fixed-top navbar-dark bg-dark">
             
               <a href="/" class="navbar-brand d-flex mx-auto">iMMEr</a>
         </nav>
-    
+        </div>
 
-    <div class="container-fluid search">
+    <div class="container-fluid align-middle buttpad search">
 
     <form action="/result" method="post" class="d-flex form-control-lg">
     
     <input required autocomplete="on" autofocus class="form-control form-control-lg" name="input" type="text" placeholder="search" aria-label="Search">                 
 
-            <select required name="lang" class="form-select btn-lg mx-2 w-auto">
-                <option value="fr">French</option>
-                <option value="es">Spanish</option>
-                <option value="it">Italian</option>
-                <option value="de">German</option>
+            <select required onchange="remember(this.selectedIndex);" id='lang' name="lang" class="form-select btn-lg mx-2 w-25">
+                <option value="" disabled>select language</option>
+                <option value="zh-CN">Chinese</option>
                 <option value="en">English</option>
-
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="is">Icelandic</option>
+                <option value="it">Italian</option>
+                <option value="ja">Japanese</option>
+                <option value="ko">Korean</option>
+                <option value="ru">Russian</option>
+                <option value="es">Spanish</option>
+                <option value="uk">Ukrainian</option>                
             </select>
-            <button class="d-flex btn btn-lg btn-primary" type="submit">GO</button>
+
+    <!-- remember last language selection -->
+    <script type="text/javascript">
+        document.getElementById("lang").onchange = function() {
+        localStorage['lang'] = document.getElementById("lang").value;
+        }
+        window.onload= function(){
+            if(localStorage['lang'])
+                document.getElementById("lang").value = localStorage['lang'];
+        }
+        </script>
+
+            <button class="d-flex btn btn-lg btn-primary w-auto" type="submit">GO</button>
+
         </form>
     </div>
         <main>

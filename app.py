@@ -22,7 +22,7 @@ def result():
 
     
     #translate and combine query with url
-    destlang = translator.translate(usrinp, lang_sel,)
+    destlang = translator.translate(usrinp, lang_sel)
 
     #combine url with user input.
         #possible that this could be exchanged for other search engines.
@@ -39,16 +39,16 @@ def result():
     htmlfile = BeautifulSoup(r.text, 'lxml')
     htmlfile = htmlfile.find("div", { "id" : "main" })
     htmlfile = htmlfile.select("a[href^='/url?q']")
-    with open('output.htm', 'w') as f:
+    with open('output.htm', 'w', encoding='utf-8') as f:
         f.write(str(htmlfile))
-    with open('output.htm', 'r') as f:
+    with open('output.htm', 'r', encoding='utf-8') as f:
         htmlfile = f.read()
         htmlfile = htmlfile.replace("/url?q=", "https://www.google.com/url?q=")
-    with open('output.htm', 'w') as f:
+    with open('output.htm', 'w', encoding='utf-8') as f:
         f.write(str(htmlfile))
     links = BeautifulSoup(htmlfile, 'lxml')   
     url = links.find_all(href=True)
-    with open('output.htm', 'r') as f:
+    with open('output.htm', 'r', encoding='utf-8') as f:
         soup = f.read()
 
     #reformatting and removing unwanted tags
@@ -58,7 +58,6 @@ def result():
         for match in links.findAll(tag):
             match.replaceWithChildren()
 
-    print(type(links))
     #replace commas with div brackets to break up the container.
     links = re.sub(">, ", "></p></td></tr><tr><td><p>", str(links))
 
@@ -72,15 +71,18 @@ def result():
     links = re.sub('" class=', '<i ignore=', str(links))
     links = re.sub('></a>', '></i></a>', str(links))
     links = re.sub('<img alt="', '', str(links))
-    
-    #remove google links
-
-    links = re.sub("Learn more", "</a><a href='https://www.google.com/search?q=best+language+learning+sites'>Language Resources", str(links))
-    links = re.sub("Sign in", "</a><a href='https://github.com/iamgillespie/immersearch.git'>About  iMMEr", str(links))
-    links = re.sub("Preferences", "</a><a href='https://www.google.com/'>All results taken from Google</a>", str(links))
 
     #modify anchor to open in new tab
-    links = re.sub("<a ", "<a target='_blank' ", str(links))
+    links = re.sub("<a ", "<img src='static/link.svg' alt='link'><a id='emmir' target='_blank' ", str(links))
+
+    #modify google links
+    googleref = translator.translate('Results from Google', lang_sel)
+    aboutimmer = translator.translate('Learn about iMMEr', lang_sel)
+    resources = translator.translate('language learning resources', lang_sel)
+
+    links = re.sub("Learn more", "</a><a href='https://www.google.com/search?q=best+language+learning+apps'>" + str(resources.text), str(links))
+    links = re.sub("Sign in", "</a><a href='https://github.com/iamgillespie/immersearch.git'>" + str(aboutimmer.text), str(links))
+    links = re.sub("Preferences", "</a><a href='https://www.google.com/'>" + str(googleref.text) +"</a>", str(links))
 
     #strip brackets
     links = (links.strip('[').strip(']'))

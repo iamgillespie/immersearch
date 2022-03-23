@@ -6,16 +6,16 @@
 
 
 
-    <table class="table table-hover table-dark table-borderless table-responsive align-middle" id="results">
+    <table class="table table-hover table-dark table-responsive align-text-bottom" id="results">
         <tr>
             <td>
-            <center><p><b>iMMEr query:</b> {{ translation }}</p></center>
+            <center><p>iMMEr query: {{ translation }}</p></center>
             </td>
         </tr>
         <tr>
-                <td>
-                    <p>{{ links|safe }}</p>
-                </td>
+            <td>
+                {{ links|safe }}            
+            </td>
         </tr>
     </table>
         
