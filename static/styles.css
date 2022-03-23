@@ -29,8 +29,9 @@ nav .navbar-brand:hover {
 opacity: 1;
 }
 
-.search {
+DIV.search {
 padding-top: 50px;
+vertical-align: middle;
 }
 
 .buttpad {
