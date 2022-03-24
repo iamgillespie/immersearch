@@ -15,3 +15,11 @@
 
 ## A note on scraping...
 #### Scraping can be a controversial topic. There is no attempt to hide that these links are being scraped from google. The intent of the eMMIr application is for educational purposes only. Some google links are altered in the process as a matter of aesthetics. 
+
+## Hey! Some of these links aren't in my target language!!!!
+#### Sometimes there is a little overlap in language and you might get results that aren't in the language you want.  However, most of the links should be in your taget language.
+
+## None of the links are in my target language...
+#### The most common cause of this is your browsers translation feature. In google chrome, it will sometimes attempt to auto-translate pages.  For more information on disabling or managing this feature visit https://support.google.com/chrome/answer/173424?hl=en&co=GENIE.Platform%3DDesktop
+
+### Thank you for checking out iMMEr. I hope this tool is a useful tool for fellow my fellow language learners. 
