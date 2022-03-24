@@ -20,6 +20,6 @@
 #### Sometimes there is a little overlap in language and you might get results that aren't in the language you want.  However, most of the links should be in your taget language.
 
 ## None of the links are in my target language...
-#### The most common cause of this is your browsers translation feature. In google chrome, it will sometimes attempt to auto-translate pages.  For more information on disabling or managing this feature visit https://support.google.com/chrome/answer/173424?hl=en&co=GENIE.Platform%3DDesktop
+#### The most common cause of this is your browsers translation feature. In google chrome, it will sometimes attempt to auto-translate pages.  For more information on disabling or managing this feature visit https://support.google.com/chrome/answer/173424?hl=en&co=GENIE.Platform%3DDesktop or let me google that for you here... https://lmgtfy.app/?q=disable+translation+in+my+browser
 
 ### Thank you for checking out iMMEr. I hope this tool is a useful tool for fellow my fellow language learners. 
