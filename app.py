@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from googletrans import Translator, constants
 import re, requests, lxml
 from bs4 import BeautifulSoup
@@ -7,7 +7,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template('immer.html')
+
+@app.route("/immer")
+def immer():
+    return render_template("immer.html")
 
 @app.route("/result", methods=["POST"])
 def result():
@@ -19,11 +23,10 @@ def result():
     usrinp = request.form.get("input")
     #selected language
     lang_sel = request.form.get("lang")
-
-    
+    print(usrinp, lang_sel)
     #translate and combine query with url
-    destlang = translator.translate(usrinp, lang_sel)
-
+    destlang = translator.translate(usrinp, dest=lang_sel)
+    print('DESTLANG VARIABLE: ', destlang,)
     #combine url with user input.
         #possible that this could be exchanged for other search engines.
     url = ('https://www.google.com/search?q=' + destlang.text)
@@ -87,4 +90,4 @@ def result():
     #strip brackets
     links = (links.strip('[').strip(']'))
            
-    return render_template("result.html", translation = destlang.text, links = links)
+    return render_template("immerresult.html", translation = destlang.text, links = links)
