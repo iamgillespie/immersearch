@@ -23,10 +23,10 @@ def result():
     usrinp = request.form.get("input")
     #selected language
     lang_sel = request.form.get("lang")
-    print(usrinp, lang_sel)
+
     #translate and combine query with url
     destlang = translator.translate(usrinp, dest=lang_sel)
-    print('DESTLANG VARIABLE: ', destlang,)
+
     #combine url with user input.
         #possible that this could be exchanged for other search engines.
     url = ('https://www.google.com/search?q=' + destlang.text)
@@ -90,4 +90,4 @@ def result():
     #strip brackets
     links = (links.strip('[').strip(']'))
            
-    return render_template("immerresult.html", translation = destlang.text, links = links)
+    return render_template("result.html", translation = destlang.text, links = links)
