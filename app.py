@@ -3,6 +3,7 @@ from googletrans import Translator, constants
 import re, requests, lxml
 from bs4 import BeautifulSoup
 
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -29,7 +30,7 @@ def result():
 
     #combine url with user input.
         #possible that this could be exchanged for other search engines.
-    url = ('https://www.google.com/search?q=' + destlang.text)
+    url = ('https://www.google.com/search?q=' + destlang.text + '&num=30' + '&safe=active')
 
     #user agent to assure google that it's not the end of the world
     headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
