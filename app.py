@@ -30,6 +30,8 @@ def result():
 
     #combine url with user input.
         #possible that this could be exchanged for other search engines.
+        # setting number of results to 30
+        # adding safe filter to query
     url = ('https://www.google.com/search?q=' + destlang.text + '&num=30' + '&safe=active')
 
     #user agent to assure google that it's not the end of the world
