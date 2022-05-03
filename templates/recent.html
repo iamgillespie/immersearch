@@ -10,7 +10,7 @@
 
 <form action="/result" method="post" class="">
 <div class="search">
-
+<input id="ipinfo" name="ipinfo" hidden></input>
 <div class="block">
 <select required onchange="remember(this.selectedIndex);" id='lang' name="lang" class="select">
     <option value="" disabled>language</option>
@@ -55,16 +55,18 @@ document.getElementById("lang").value = localStorage['lang'];
 
 
     <table class="table table-hover table-responsive table-borderless" id="results">
-        <tr>
+        <thead>
             <th>
-            <p class="text-center align-bottom">iMMEr query: {{ translation }}</p>
+                <p class="scraps">Recent searches...</p>            
             </th>
-        </tr>
+        </thead>
+        {% for i in recents %}
         <tr class="p-0 align-middle">
             <td>
-                <p class="scraps">{{ links|safe }}</p>            
+                <a href="{{ i['url'] }}"><i class='bi bi-link-45deg'></i> - {{ i['string']|safe }}</a>            
             </td>
         </tr>
+        {% endfor %}
     </table>
         
 <div style="height: 100px;"></div>

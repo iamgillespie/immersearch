@@ -12,7 +12,7 @@
         <img src="static/images/immer.png" id="immer">
     </a>      
     </div>
-<form action="/result" method="post" class="">
+<form action="/result" method="post" class="p-0">
 <div class="search">
 
 <div class="block">
@@ -33,13 +33,14 @@
 </div>
 
 <div class="block">
-<input class="input" required id="qry" autocomplete="on" autofocus class="" name="input" type="search" placeholder="search" aria-label="Search">              
+<input class="input" required id="qry" autocomplete="on" autofocus name="input" type="search" placeholder="search" aria-label="Search">              
 </div>
 
 <div class="block">
 <button class="button" type="submit">GO</button>
 </div>
 </div>
+<input hidden type="text" id="ipinfo" name="ipinfo"></input>
 </form>
 </div>
 
@@ -58,4 +59,3 @@ document.getElementById("lang").value = localStorage['lang'];
 
 
 {% endblock %}
-
