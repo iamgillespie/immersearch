@@ -12,6 +12,11 @@ body {
     margin: 0 auto;
 }
 
+div#footer {
+    background-color: antiquewhite;
+    color: #4c98af;
+}
+
 a {
     text-decoration: none;
     color: #4c98af;
