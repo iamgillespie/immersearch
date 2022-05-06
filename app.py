@@ -3,13 +3,19 @@ from googletrans import Translator, constants
 import re, requests, lxml
 from bs4 import BeautifulSoup
 import sqlite3 as sql
+import json
 
 app = Flask(__name__)
 
 @app.route("/")
 @app.route("/immer")
 def immer():
-    return render_template("immer.html")
+    con = sql.connect('immer.db')
+    con.row_factory = sql.Row  
+    cur = con.cursor()
+    langs = con.execute('SELECT * FROM langs ORDER BY language ASC')
+
+    return render_template("immer.html", langs = langs)
 
 @app.route("/recent")
 def recent():
@@ -17,9 +23,9 @@ def recent():
     con = sql.connect('immer.db')
     con.row_factory = sql.Row  
     cur = con.cursor()
-    recents = con.execute('SELECT * FROM qlog LIMIT 10')
-
-    return render_template("recent.html", recents = recents)
+    recents = con.execute('SELECT DISTINCT string, * FROM qlog ORDER BY id DESC LIMIT 100;')
+    langs = con.execute('SELECT * FROM langs ORDER BY language ASC')      
+    return render_template("recent.html", recents = recents, langs = langs)
 
 @app.route("/result", methods=["POST"])
 def result():
@@ -29,8 +35,18 @@ def result():
     usrinp = request.form.get("input")
     #selected language
     lang_sel = request.form.get("lang")
-    #ip log
+    #ip logging
     ipinfo = request.form.get("ipinfo")
+
+    # create url to qry geolocation site...
+    response = requests.get('https://geolocation-db.com/jsonp/' + ipinfo)
+    result = response.content.decode()
+    result = result.split("(")[1].strip(")")
+    result  = json.loads(result)
+    country = result['country_name']
+    country_code = result['country_code']
+    city = result['city']
+
     #translate and combine query with url
     destlang = translator.translate(usrinp, dest=lang_sel)
 
@@ -38,13 +54,14 @@ def result():
         #possible that this could be exchanged for other search engines.
         # setting number of results to 30
         # adding safe filter to query
-    url = ('https://www.google.com/search?q=' + destlang.text + '&num=30' + '&safe=active')
+    url = ('https://www.google.com/search?hl=' + lang_sel + '&q=' + destlang.text + '&num=30' + '&safe=active')
 
 
     con = sql.connect('immer.db')
     con.row_factory = sql.Row  
     cur = con.cursor()
-    con.execute('INSERT INTO qlog (ip, url, string) VALUES (?, ?, ?)', (ipinfo, url, usrinp))
+    langs = con.execute('SELECT * FROM langs ORDER BY language ASC')
+    con.execute('INSERT INTO qlog (url, string, trans, country, country_code, city, target_lang) VALUES (?, ?, ?, ?, ?, ?, ?)', (url, usrinp, destlang.text, country, country_code, city, lang_sel))
     con.commit()
 
     #user agent to assure google that it's not the end of the world
@@ -106,4 +123,4 @@ def result():
     #strip brackets
     links = (links.strip('[').strip(']'))
            
-    return render_template("result.html", translation = destlang.text, links = links, ipinfo = ipinfo)
+    return render_template("result.html", translation = destlang.text, links = links, ipinfo = ipinfo, langs = langs)

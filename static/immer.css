@@ -57,7 +57,7 @@ font-size: 1.1em;
 font-weight: normal;
 text-align: center;
 display: block;
-width: 500px;
+width: 400px;
 background: rgb(255, 255, 255);
 outline: none;
 border: none;
@@ -79,7 +79,7 @@ font-size: 1.1em;
 font-weight: normal;
 text-align: center;
 display: block;
-width: auto;
+width: 100px;
 background: #4c98af;
 color: white;
 outline: none;
@@ -115,6 +115,7 @@ z-index: 1;
 position: relative;
 top: -1px;
 height: 2.545455em;
+width: 100px;
 transition: background-color 200ms;
 }
 
@@ -183,7 +184,7 @@ margin-bottom: 48px;
 
 @media only screen and (max-width: 800px) {
     .input {
-      width: 50vw;
+      width: 40vw;
     }
     #footlink {
         display: none;
