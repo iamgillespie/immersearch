@@ -135,7 +135,7 @@ width: auto;
 
 div.search{
 filter: drop-shadow(2px 2px 2px #8080e5);
-transition: filter 300ms;
+transition: filter 100ms;
 }
 
 div.search:hover {
@@ -162,16 +162,15 @@ margin-bottom: 48px;
 }
 
 .immersml {
-    width: 64px;
+    width: 96px;
     transform: scaleX(-1);
     position: fixed;
-    right: 30px;
+    right: 40px;
     bottom: 55px;
-    transition: width 300ms, opacity 300ms;
+    transition: opacity 300ms;
 }
 
 .immersml:hover {
-    width: 68px;
     opacity: .6;
 }
 
@@ -193,3 +192,23 @@ margin-bottom: 48px;
         font-size: xx-large;
     }
   }
+
+
+  img#brokenimage
+{
+    position: relative;
+    width: 100%;
+}
+
+img#brokenimage:after {
+    content: attr(alt);
+    font-size: 20px;
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+}

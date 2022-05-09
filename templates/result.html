@@ -43,28 +43,22 @@ if(localStorage['lang'])
 document.getElementById("lang").value = localStorage['lang'];
 }
 </script>
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 5fd327a (rebuilt entire engine)
 </div>
 
 
-
-    <table class="table table-hover table-responsive table-borderless" id="results">
-        <tr>
-            <th>
+<div class="results">
             <p class="text-center align-bottom">iMMEr query: {{ translation }}</p>
-            </th>
-        </tr>
-        <tr class="p-0 align-middle">
-            <td>
-                <p class="scraps">{{ links|safe }}</p>            
-            </td>
-        </tr>
-    </table>
+
+        {% for i in links %}
+<div>
+        {{ i | safe }}            
+</div>
+        {% endfor %}
+
+</div>
         
-<div style="height: 100px;"></div>
+<div style="height: 10vh;"></div>
 
 
 {% endblock %}
