@@ -1,66 +1,53 @@
 {% extends "immerlayout.html" %}
-
 {% block title %}{% endblock %}
-
 {% block main %}
-
 <a href="/immer"><img src="static/images/immeri.png" class="immersml"></a>
-
 <div class="resultsbar">
-
-    <form action="/result" method="post" class="p-0">
-        <div class="search">
-
-            <div class="block">
-                <select required onchange="remember(this.selectedIndex);" id='lang' name="lang" class="select">
-                    <option value="" disabled>language</option>
-                    {% for i in langs %}
-                    <option value="{{ i['code']}}">{{ i['language']}}</option>
-                    {% endfor %}
-
-                </select>
-            </div>
-
-            <div class="block">
-                <input class="input" required id="qry" autocomplete="on" autofocus class="" name="input" type="text"
-                    placeholder="search" aria-label="Search">
-            </div>
-            <input id="ipinfo" name="ipinfo" hidden></input>
-            <div class="block">
-                <button class="button" type="submit">GO</button>
-            </div>
-        </div>
-    </form>
+   <form action="/result" method="post" class="p-0">
+      <div class="search">
+         <div class="block">
+            <select required onchange="remember(this.selectedIndex);" id='lang' name="lang" class="select">
+               <option value="" disabled>language</option>
+               {% for i in langs %}
+               <option value="{{ i['code']}}">{{ i['language']}}</option>
+               {% endfor %}
+            </select>
+         </div>
+         <div class="block">
+            <input class="input" required id="qry" autocomplete="on" autofocus class="" name="input" type="text"
+               placeholder="search" aria-label="Search">
+         </div>
+         <input id="ipinfo" name="ipinfo" hidden></input>
+         <div class="block">
+            <button class="button" type="submit">GO</button>
+         </div>
+      </div>
+   </form>
 </div>
-
 <!-- remember last language selection -->
 <script type="text/javascript">
-    document.getElementById("lang").onchange = function () {
-        localStorage['lang'] = document.getElementById("lang").value;
-    }
-    window.onload = function () {
-        if (localStorage['lang'])
-            document.getElementById("lang").value = localStorage['lang'];
-    }
+   document.getElementById("lang").onchange = function () {
+       localStorage['lang'] = document.getElementById("lang").value;
+   }
+   window.onload = function () {
+       if (localStorage['lang'])
+           document.getElementById("lang").value = localStorage['lang'];
+   }
 </script>
 </div>
-
 <table class="table table-hover table-responsive table-borderless" id="results">
-    <thead>
-        <th>
-            <p class="scraps">Recent searches...</p>
-        </th>
-    </thead>
-    {% for i in recents %}
-    <tr class="p-0 align-middle">
-        <td>
-            <a href="{{ i['url'] }}"><i class='bi bi-link-45deg'></i> - {{ i['trans'] }}</a>
-        </td>
-    </tr>
-    {% endfor %}
+   <thead>
+      <th>
+         <p class="scraps">Recent searches...</p>
+      </th>
+   </thead>
+   {% for i in recents %}
+   <tr class="p-0 align-middle">
+      <td>
+         <a href="{{ i['url'] }}"><i class='bi bi-link-45deg'></i> - {{ i['trans'] }}</a>
+      </td>
+   </tr>
+   {% endfor %}
 </table>
-
 <div style="height: 100px;"></div>
-
-
 {% endblock %}

@@ -1,55 +1,43 @@
 {% extends "immerlayout.html" %}
-
 {% block title %}
 Imer index page
 {% endblock %}
-
 {% block main %}
-
 <div class="container-fluid center">
-    <div class="immer">
-        <a href="/immer">
-            <img src="static/images/immer.png" id="immer">
-        </a>
-    </div>
-    <form action="/result" method="post" class="p-0">
-        <div class="search">
-
-            <div class="block">
-                <select required onchange="remember(this.selectedIndex);" id='lang' name="lang" class="select">
-                    <option value="" disabled>language</option>
-                    {% for i in langs %}
-                    <option value="{{ i['code']}}">{{ i['language']}}</option>
-                    {% endfor %}
-
-                </select>
-            </div>
-
-            <div class="block">
-                <input class="input" required id="qry" autocomplete="on" autofocus name="input" type="search"
-                    placeholder="search" aria-label="Search">
-            </div>
-
-            <div class="block">
-                <button class="button" type="submit">GO</button>
-            </div>
-        </div>
-        <input hidden type="text" id="ipinfo" name="ipinfo"></input>
-    </form>
+   <div class="immer">
+      <a href="/immer">
+      <img src="static/images/immer.png" id="immer">
+      </a>
+   </div>
+   <form action="/result" method="post" class="p-0">
+      <div class="search">
+         <div class="block">
+            <select required onchange="remember(this.selectedIndex);" id='lang' name="lang" class="select">
+               <option value="" disabled>language</option>
+               {% for i in langs %}
+               <option value="{{ i['code']}}">{{ i['language']}}</option>
+               {% endfor %}
+            </select>
+         </div>
+         <div class="block">
+            <input class="input" required id="qry" autocomplete="on" autofocus name="input" type="search"
+               placeholder="search" aria-label="Search">
+         </div>
+         <div class="block">
+            <button class="button" type="submit">GO</button>
+         </div>
+      </div>
+      <input hidden type="text" id="ipinfo" name="ipinfo"></input>
+   </form>
 </div>
-
-
 <!-- remember last language selection -->
 <script type="text/javascript">
-    document.getElementById("lang").onchange = function () {
-        localStorage['lang'] = document.getElementById("lang").value;
-    }
-    window.onload = function () {
-        if (localStorage['lang'])
-            document.getElementById("lang").value = localStorage['lang'];
-    }
+   document.getElementById("lang").onchange = function () {
+       localStorage['lang'] = document.getElementById("lang").value;
+   }
+   window.onload = function () {
+       if (localStorage['lang'])
+           document.getElementById("lang").value = localStorage['lang'];
+   }
 </script>
-
-
-
 {% endblock %}
