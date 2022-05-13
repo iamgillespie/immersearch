@@ -161,17 +161,33 @@ margin-bottom: 48px;
     text-overflow: ellipsis; 
 }
 
-.immersml {
-    width: 96px;
-    transform: scaleX(-1);
-    position: fixed;
-    right: 40px;
-    bottom: 55px;
-    transition: opacity 300ms;
+div.immer-container {
+position: fixed;
+right: 40px;
+bottom: 55px;
+height: 200px;
+width: 300px;
 }
 
-.immersml:hover {
-    opacity: .6;
+.bubble {
+    background-color: #fff;
+    width: 200px;
+    height: 120px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    display: none;
+}
+
+.show:hover .bubble {
+    display: block;
+}
+
+.immersml {
+    width: 96px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 .about {
@@ -193,22 +209,3 @@ margin-bottom: 48px;
     }
   }
 
-
-  img#brokenimage
-{
-    position: relative;
-    width: 100%;
-}
-
-img#brokenimage:after {
-    content: attr(alt);
-    font-size: 20px;
-    display: block;
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #fff;
-}
